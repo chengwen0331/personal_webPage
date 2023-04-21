@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GALLERY</title>
+    <link rel="shortcut icon" type="image/png" href="images/gallery_icon.png">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        .container{
+            background: black;
+            width:100%;
+            height:80%;
+            display: flex;
+            align-items:top;
+            justify-content: center;
+        }
+        nav{
+            background: white;
+            border-radius: 50px;    
+            padding: 10px;
+            box-shadow: 0 25px 20px -20px rgba(0,0,0,0.4);
+        }
+        nav ul li{
+            list-style: none;
+            display: inline-block;
+            padding: 13px 35px;
+            margin: 10px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #777;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+
+        }
+        nav ul li::after{
+            content: "";
+            background: #ff91a5;
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;  
+            opacity: 0;  
+        }
+        nav ul li a{
+            text-decoration: none;
+            font-size: 22px;
+            padding: 5px 10px;
+            border: 2px solid transparent;
+            color:black;
+            font-weight: bold;
+        }
+        nav ul li a:hover{
+            border:2px solid whitesmoke;
+            background: lightgray;
+            transition: 0.5s;
+            border-radius: 15px;
+            padding:10px;
+        }
+        nav ul li a:hover::after{
+            top:50%;
+            opacity: 1;
+        }
+        .contain{
+            background: white;
+            width:100%;
+            text-align: center;
+        }
+        input{
+            display: none;
+        }
+        h1{
+            font-weight: 500;
+            font-size: 35px;
+            position: relative;
+            margin: 40px 0;
+        }
+        h1::before{
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: #ff91a5;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: animate 4s linear infinite;
+        }
+        @keyframes animate{
+            0%{
+                width:100px;
+            }
+            50%{
+                width:200px;
+            }
+            100%{
+                width:100px;
+            }
+        }
+        .top-content{
+            background-color: rgb(243,243,243);
+            width:100%;
+            margin: 0 auto 20px auto;
+            height:60px;
+            display:flex;
+            align-items: center;
+            border-radius: 5px;
+            box-shadow: 3px 3px 5px lightgray;
+        }
+        h3{
+            height: 100%;
+            line-height: 60px;
+            padding: 0 50px;
+            background-color: rgb(221,221,221);
+        }
+        label{
+            display: inline-block;
+            height: 100%;
+            margin: 0 20px;
+            line-height: 60px;
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.5s;
+        }
+        label:hover{
+            color: lightblue;
+        }
+        .photo-gallery{
+            width: 90%;
+            margin: auto; 
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-gap:20px;
+        }
+        .pic{
+            position: relative;
+            height: 230px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 5px lightgray;
+            cursor: pointer;
+            transition: 0.5s;
+        }
+        .pic img{
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            transition: 0.5s;
+        }
+        .pic::before{
+            content:"PHOTO GALLERY";
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            width:100%;
+            margin-top: -100px;
+            opacity: 0;
+            transition: 0.3s;
+            transition-delay: 0.2s;
+            z-index: 1;
+        }
+        .pic:after{
+            content:"";
+            position: absolute;
+            width:100%;
+            bottom: 0;
+            left: 0;
+            border-radius: 10px;
+            height:0;
+            background-color: rgba(0,0,0,0.4);
+            transition: 0.3s;
+        }
+        .pic:hover::after{
+            height: 100%;
+        }
+        .pic:hover::before{
+            margin-top: 0;
+            opacity: 1;
+        }
+        #check1:checked ~ .contain .photo-gallery .pic{
+            opacity: 1;
+            transform: scale(1);
+            position: relative;
+            transition: 0.5s;
+        }
+        #check2:checked ~ .contain .photo-gallery .family{
+            opacity: 1;
+            transform: scale(1);
+            position: relative;
+        }
+        #check2:checked ~ .contain .photo-gallery .friend,
+        #check2:checked ~ .contain .photo-gallery .favourite{
+            opacity: 0;
+            transform: scale(0);
+            position: absolute;
+            transition: 0s;
+        }
+        #check3:checked ~ .contain .photo-gallery .friend{
+            opacity: 1;
+            transform: scale(1);
+            position: relative;
+        }
+        #check3:checked ~ .contain .photo-gallery .family,
+        #check3:checked ~ .contain .photo-gallery .favourite{
+            opacity: 0;
+            transform: scale(0);
+            position: absolute;
+            transition: 0s;
+        }
+        #check4:checked ~ .contain .photo-gallery .favourite{
+            opacity: 1;
+            transform: scale(1);
+            position: relative;
+        }
+        #check4:checked ~ .contain .photo-gallery .family,
+        #check4:checked ~ .contain .photo-gallery .friend{
+            opacity: 0;
+            transform: scale(0);
+            position: absolute;
+            transition: 0s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="index.html" target="_self" style="color:black;">HOME</a></li>
+                <li><a href="myself.html" target="_self" style="color:black;">PROFILE</a></li>
+                <li><a href="mygallery.html" target="_self" style="color: black;">GALLERY</a></li>
+                <li><a href="mylinks.html" target="_self" style="color: black;">FAV LINK</a></li>
+            </ul>
+        </nav>
+    </div>  
+    <input type="radio" name="Photos" id="check1" checked> 
+    <input type="radio" name="Photos" id="check2"> 
+    <input type="radio" name="Photos" id="check3"> 
+    <input type="radio" name="Photos" id="check4"> 
+    <div class="contain">
+        <h1> MY PHOTO GALLERY</h1>
+        <div class="top-content">
+            <h3 style="color: white;"> PHOTO GALLERY</h3>
+            <label for="check1">All Photos</label>
+            <label for="check2">Family Photos</label>
+            <label for="check3">Friends Photos</label>
+            <label for="check4">Favourite Photos</label>
+        </div>
+        <div class="photo-gallery">
+            <div class="pic favourite">
+                <img src="images/favourite1.jpg">
+            </div>
+            <div class="pic family">
+                <img src="images/family1.jfif">
+            </div>
+            <div class="pic friend">
+                <img src="images/friend1.jpg">
+            </div>
+            <div class="pic favourite">
+                <img src="images/favourite2.jpg">
+            </div>
+            <div class="pic family">
+                <img src="images/family2.jpg">
+            </div>
+            <div class="pic friend">
+                <img src="images/friend2.jpg">
+            </div>
+            <div class="pic favourite">
+                <img src="images/favourite3.jpg">
+            </div>
+            <div class="pic friend">
+                <img src="images/friend3.jpg">
+            </div>
+            <div class="pic favourite">
+                <img src="images/favourite4.jpg">
+            </div>
+            <div class="pic friend">
+                <img src="images/friend4.jpg">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

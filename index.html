@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERSONAL WEBPAGE</title>
+    <link rel="shortcut icon" type="image/png" href="images/cw_logo.png">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+            background-image: url(images/background_img.png);
+            background-position: center;
+            background-size:cover;
+        }
+        .navbar{
+            width: 100%;
+            margin:auto;
+            display: flex;
+            padding: 10px ;
+            align-items: center;
+            justify-content: space-between;
+            background-color: black;
+            position: sticky;
+            top: 0;
+        }
+        .logo{
+            width: 200px;
+            height:80px;
+            cursor:pointer;
+        }
+        nav{
+            float:right;
+            margin: -40px 40px;        
+        }
+        nav ul li{
+            display: inline-block;
+            list-style:none;
+            margin: 20px;
+        }
+        nav ul li a{
+            text-decoration: none;
+            font-size: 20px;
+            padding: 5px 10px;
+            border: 2px solid transparent;
+            color:black;
+        }
+        nav ul li a:hover{
+            border:2px solid whitesmoke;
+            transition: 0.5s;
+            border-radius: 15px;
+            color: darkred;
+        }
+        .content h1{
+            font-size:70px;
+            font-weight:100;
+            margin-top:24px;
+            margin-bottom:15px;
+            color:black;
+        }
+        .content p{
+            margin: 10px 0 30px;
+            font-size:20px;
+            color:black;
+
+        }
+        .content{
+            margin-left: 10%;
+            margin-top: 10%;
+            animation-delay: 0.5s;
+        }
+        .feature-img{
+            height:80%;
+            position:absolute;
+            bottom:0;
+            right: 50px;
+        }
+        .feature-img.anim{
+            animation-delay: 1.5s;
+        }
+        .btn{
+            display:inline-block;
+            text-decoration: none;
+            padding: 14px 40px;
+            color:white;
+            background-color: black;
+            font-size: 18px;
+            border-radius: 30px;
+            animation-delay: 1.0s;
+        }
+        .anim{
+            opacity:0;
+            transform: translateY(30px);
+            animation: moveup 0.5s linear forwards;
+        }
+        @keyframes moveup{
+            100%{
+                opacity:1;
+                transform: translateY(0px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <img src="images/cw_logo.png" class="logo" alt="logo" width="80" height="50">
+            <nav>
+                <ul>
+                    <li><a href="index.html" target="_self" style="color:white;">HOME</a></li>
+                    <li><a href="myself.html" target="_self" style="color:white;">PROFILE</a></li>
+                    <li><a href="mygallery.html" target="_self" style="color: white;">GALLERY</a></li>
+                    <li><a href="mylinks.html" target="_self" style="color: white;">FAV LINK</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <h1 class="anim">WELCOME<br>TO CW WEBPAGE</h1>
+            <p class="anim">This is my personal web page including all my details..</p>
+            <a href="myself.html" class="btn anim"> ABOUT ME</a>
+        </div>
+        <img src="images/pic_1.png" class="feature-img anim">
+    </div>
+
+</body>
+</html>

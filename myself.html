@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFILE</title>
+    <link rel="shortcut icon" type="image/png" href="images/profile_icon.png">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+        }
+        :root{
+            --sideBGColor:#040b14;
+            --themeColor: #2a2a2a;
+            --iconBGColor:#2C2F3F;
+            --textColor:white;
+            --bgColor:#F7F7F7;
+        }
+        header{
+            height:100vh;
+            width:300px;
+            padding:15px 30px;
+            background-color: var(--sideBGColor);
+            overflow-y: auto;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom:0;
+            transition: 0.4s;
+            z-index: 99;
+        }
+        header .profile{
+            text-align: center;
+            margin:10px 0;
+        }
+        header .profile img{
+            width:150px;
+            border-radius: 50%;
+            border: 10px solid var(--iconBGColor);
+        }
+        header .profile h1{
+            color: white;
+            font-weight: 600;
+        }
+        .navbar{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            background-color: black;
+        }
+        .logo{
+            width: 200px;
+            height:80px;
+            cursor:pointer;
+        }
+        nav{
+            float:right;
+            margin: 30px;        
+        }
+        nav ul li{
+            display: inline-block;
+            list-style:none;
+            margin: 20px;
+        }
+        nav ul li a{
+            display: inline-block;
+            text-decoration: none;
+            font-size: 15px;
+            padding: 10px 10px;
+            border: 3px solid transparent;
+            color:white;
+            font-weight: 400;
+            letter-spacing: 0.6px;
+        }
+        nav ul li a:hover{
+            border:2px solid whitesmoke;
+            transition: 0.5s;
+            border-radius: 15px;
+            color: blue;
+        }
+        nav ul li a i{
+            margin-right: 3px;
+            font-size: 20px;
+            transition: 0.4s;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500,0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        .footer{
+            text-align: center;
+            background-color:var(--sideBGColor) ;
+            width:300px;
+            color:white;
+            font-size: 14px;
+            letter-spacing:0.6px;
+            padding: 15px;
+            position:fixed;
+            bottom:0;
+            left:0;
+            transition:0.4s; 
+        }
+        @media only screen and (max-width:1050px){
+            header{
+                left:-300px;
+            }
+            .footer{
+                left:-300px;
+            }
+        }
+        main{
+            margin-left: 300px;
+            background-color: rgb(180, 178, 178);
+            transition: 0.3s;
+        }
+        @media only screen and (max-width:1050px){
+            main{
+                margin-left: 0;
+            }
+        }
+        #home{
+            height:100vh;
+            width:100%;
+            background-image: url(images/profile_img.jpg);
+            background-size:cover;
+            background-repeat: no-repeat;
+            background-attachment:fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px;
+            position: relative;
+        }
+        #home::before{
+            content:'';
+            width:100%;
+            height:100%;
+            background-color:rgba(0,0,0,0.431);
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        #home .home-row{
+            z-index: 1;
+        }
+        #home .home-row h1{
+            font-size: 60px;
+            color: black;
+            font-weight: 500;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            line-height: 70px;
+            font-family: 'Segoe UI';
+        }
+        #home .home-row p{
+            font-size: 30px;
+            color: black;
+            font-weight: 500;
+            font-family: 'Segoe UI';
+        }
+        @media only screen and (min-width: 670px){
+            #home{
+                padding: 30px;
+            }
+            #home .home-row h1{
+                font-size: 35px;
+                letter-spacing: 0;
+                line-height: 50px;
+            }
+            #home .home-row h1 br{
+                display: none;
+            }
+            #home .home-row p{
+                font-size: 20px;
+                font-weight: 400;
+            }
+        }
+        #about{
+            padding:70px 30px;
+        }
+        .sub-heading{
+            color: black;
+            font-size: 40px;
+            margin-bottom: 10px;
+            text-decoration: underline;
+            text-align: center;
+            font-family: monospace;
+        }
+        #about .icon-list ul li{
+            list-style: none;
+            margin: 20px 5px;
+            display: flex;
+            margin-top: 20px;
+            gap: 20px;
+        }
+        #about .icon-list ul li i{
+            color: var(--themeColor);
+        }
+        #about .icon-list ul li strong{
+            color: var(--sideBGColor);
+            font-weight: 600;
+            margin-right: 2px;
+        }
+        @media only screen and (max-width:850px){
+            #about{
+                padding: 50px 10px;
+            }
+            .icon-list ul li{
+                margin: 10px 0;
+            }
+            .icon-list ul li strong{
+                font-weight: 500;
+                margin-right: 0px;
+            }
+        }
+        .btn{
+            display:inline-block;
+            text-decoration: none;
+            padding: 0 60px;
+            color:white;
+            background-color: black;
+            font-size: 18px;
+            border-radius: 40px;
+            margin-top: 1px;
+        }
+        .education .box-container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 1rem 0;
+            padding-left: 4rem;
+        }
+        .education .box-container .box{
+            width:27rem;
+            margin: 4rem 1rem;
+            padding-left: 4rem;
+            border-left: .2rem solid black;
+            position: relative;
+        }
+        .education .box-container .box span{
+            font-size: 1.3rem;
+            background-color: #222;
+            color: white;
+            border-radius: 5rem;
+            padding: .5rem 2.5rem;
+        }
+        .education .box-container .box h3{
+            font-size: 2rem;
+            color: black;
+            padding-top: 1.5rem;
+        }
+        .education .box-container .box p{
+            font-size: 1.4rem;
+            color: black;
+            padding: 1rem 0;
+        }
+        .education .box-container .box i{
+            position: absolute;
+            top:-1.5resm;
+            left:-2.5rem;
+            height: 5rem;
+            width:5rem;
+            border-radius:50%;
+            line-height: 5rem;
+            text-align: center;
+            font-size: 2rem;
+            color: white;
+            background: var(--iconBGColor);
+        }
+        #contact{
+            padding:70px 30px;
+        }
+        #contact .icon-list ul li{
+            list-style: none;
+            margin: 20px 0;
+            display: flex;
+            margin-top: 20px;
+            gap: 40px;
+        }
+        #contact .icon-list ul li i{
+            color: var(--themeColor);
+        }
+        #contact .icon-list ul li strong{
+            color: var(--sideBGColor);
+            font-weight: 600;
+            margin-right: 2px;
+        }
+    </style>
+</head>
+<body>  
+    <header>
+        <div class="profile">
+            <img src="images/profile_pic.JPG" alt="profile image">
+            <h1>Chengwenn</h1><br>
+        </div> 
+        <nav>
+            <ul>
+                <li><a href="#about"><i class ="fa-solid fa-house"></i>ABOUT ME</a></li>
+                <li><a href="#education"><i class ="fa-solid fa-book"></i>EDUCATION</a></li>
+                <li><a href="#contact"><i class ="fa-solid fa-phone"></i>CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="footer">
+            <p>&copy; Copyright 2023 <br> Designed by Chengwenn</p>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="navbar">
+                <nav>
+                    <ul>
+                        <li><a href="index.html" target="_self" class="btn" style="color:white;">HOME</a></li>
+                        <li><a href="myself.html" target="_self" class="btn" style="color:white;">PROFILE</a></li>
+                        <li><a href="mygallery.html" target="_self" class="btn" style="color: white;">GALLERY</a></li>
+                        <li><a href="mylinks.html" target="_self" class="btn" style="color: white;">FAV LINK</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <section id="home">
+            <div class="home-row">
+                <h1>Hello, I am Chengwenn</h1>
+                <p>Nice to meet you all..</p>
+            </div>
+        </section>
+        <section id="about">
+            <h1 class="sub-heading">ABOUT ME</h1>
+                <div class="icon-list">
+                    <ul>
+                        <li><i class="fa-solid fa-angle-right"></i><strong>Name:</strong>WONG CHENG WEN</li>
+                        <li><i class="fa-solid fa-angle-right"></i><strong>Age:</strong>22</li>
+                        <li><i class="fa-solid fa-angle-right"></i><strong>Date of Birth:</strong>31/03/2001</li>
+                        <li><i class="fa-solid fa-angle-right"></i><strong>Matric Number:</strong>285440</li>
+                        <li><i class="fa-solid fa-angle-right"></i><strong>Semester:</strong>4</li>
+                        <li><i class="fa-solid fa-angle-right"></i><strong>Hometown:</strong>Ipoh,Perak</li>
+                        <li><i class="fa-solid fa-angle-right"></i><strong>College:</strong>Universiti Utara Malaysia</li>
+                        <li><i class="fa-solid fa-angle-right"></i><strong>College Address:</strong>Universiti Utara Malaysia, 06010 UUM Sintok, 
+                            Kedah Darul Aman.</li>
+                    </ul>
+                </div>           
+        </section>
+        <section class="education" id="education">
+            <h1 class="sub-heading">EDUCATION</h1>
+                <div class="box-container">
+                    <div class="box">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>2018</span>
+                        <h3>Sijil Pelajaran Malaysia</h3>
+                        <p>Result: 6A4B</p>
+                    </div>
+                    <div class="box">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>2021</span>
+                        <h3>Sijil Tinggi Persekolahan Malaysia</h3>
+                        <p>Result: CGPA 3.58</p>
+                    </div>
+                    <div class="box">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>2025</span>
+                        <h3>Degree in Bachelor of Information Technology (Hons)</h3>
+                        <p>Result: -</p>
+                    </div>
+                </div>    
+        </section>
+        <section id="contact">
+            <h1 class="sub-heading">CONTACT</h1>
+                <div class="icon-list">
+                    <ul>
+                        <li><i class="fa-solid fa-phone"></i><strong>Phone Number:</strong><span>+60-182129139</span></li>
+                        <li><i class="fa-solid fa-envelope"></i><strong>Email Address:</strong><span>ch3ngw3n0331@gmail.com</span></li>
+                        <li><i class="fa-solid fa-location-dot"></i><strong>Home Address:</strong><span>7, Lorong Ciku 4, Taman Mas Baru, 31200 Chemor, Perak</span></li><br>
+                    </ul>
+                </div> 
+                <div class="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63617.1862099748!2d101.09705001367944!3d4.757132775766091!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31ca91b5ed08a341%3A0x3893f3d5c2da6fc0!2sTaman%20Mas%20Baru!5e0!3m2!1sen!2smy!4v1681611737684!5m2!1sen!2smy" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>          
+        </section>
+    </main>
+    <script src="https://kit.fontawesome.com/aa5f332820.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

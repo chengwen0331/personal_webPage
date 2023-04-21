@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAVOURITE WEBSITE</title>
+    <link rel="shortcut icon" type="image/png" href="images/web_icon.png">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body{
+            background-color: #fff4e4;
+        }
+        .container{
+            background: black;
+            width:100%;
+            height:80%;
+            display: flex;
+            align-items:top;
+            justify-content: center;
+        }
+        nav{
+            background: rgb(226, 225, 225);
+            border-radius: 50px;    
+            padding: 10px;
+            box-shadow: 0 25px 20px -20px rgba(0,0,0,0.4);
+        }
+        nav ul li{
+            list-style: none;
+            display: inline-block;
+            padding: 13px 35px;
+            margin: 10px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #777;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+
+        }
+        nav ul li::after{
+            content: "";
+            background: #ff91a5;
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;  
+            opacity: 0;  
+        }
+        nav ul li a{
+            text-decoration: none;
+            font-size: 22px;
+            padding: 5px 10px;
+            border: 2px solid transparent;
+            color:black;
+            font-weight: bold;
+        }
+        nav ul li a:hover{
+            border:2px solid black;
+            background: #ffdd93;
+            transition: 0.5s;
+            border-radius: 15px;
+            padding:10px;
+        }
+        nav ul li a:hover::after{
+            top:50%;
+            opacity: 1;
+        }
+        .contain{
+            background: #fff4e4;
+            width:100%;
+            text-align: center;
+        }
+        h1{
+            font-weight: 500;
+            font-size: 35px;
+            position: relative;
+            margin: 40px 0;
+            font-family: 'Times New Roman';
+        }
+        h1::before{
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: #fac569;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: animate 4s linear infinite;
+        }
+        @keyframes animate{
+            0%{
+                width:100px;
+            }
+            50%{
+                width:200px;
+            }
+            100%{
+                width:100px;
+            }
+        }
+        .center {
+            margin: auto;
+            width: 40%;
+            border: 5px solid black;
+            border-radius: 15px;
+            padding: 30px;
+            background: black;
+        }
+        .content{
+            margin-left: auto;
+            margin-top: auto;
+        }
+        .btn{
+            display:block;
+            text-decoration: none;
+            padding: 15px 50px;
+            color:black;
+            background-color: rgb(242, 199, 119);
+            font-size: 18px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .feature-img{
+            height:30%;
+            position:absolute;
+            bottom:0;
+            right: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="index.html" target="_self" style="color:black;">HOME</a></li>
+                <li><a href="myself.html" target="_self" style="color:black;">PROFILE</a></li>
+                <li><a href="mygallery.html" target="_self" style="color: black;">GALLERY</a></li>
+                <li><a href="mylinks.html" target="_self" style="color: black;">FAV LINK</a></li>
+            </ul>
+        </nav>
+    </div> 
+    <div class="contain">
+        <h1> MY FAVOURITE WWW PAGE LINKS</h1>
+    </div>
+    <div class="center">
+        <div class="content">
+            <a href="https://www.figma.com/" target="_self" class="btn">Figma</a><br>
+            <a href="https://www.canva.com/" target="_self" class="btn">Canva</a><br>
+            <a href="https://www.youtube.com/" target="_self" class="btn">Youtube</a><br>
+            <a href="https://www.powtoon.com/" target="_self" class="btn">Powtoon</a><br>
+            <a href="https://www.w3schools.com/" target="_self" class="btn">W3Schools</a><br>
+        </div>
+        <img src="images/computer_img.png" class="feature-img">
+    </div>
+</body>
+</html>
